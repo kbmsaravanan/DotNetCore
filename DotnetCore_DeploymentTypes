@@ -1,21 +1,59 @@
 Dotnet core publish types
 
-FDD Framework Dependent Deployment
-SCD Self Contained Deployment
- Application created under SCD will as executable without .net core runtime installation.
-publish application itself contain all .net core refference package to run the application.
+FDD Framework Dependent Deployment :-
+  This is default type in .net core. By default new application template create project as FDD.
+  Application published as FDD will run only if the targeted framework (.Net core runtime) or earlier version installed 
+in the system.
+
+.csproj file
+<PropertyGroup>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+</PropertyGroup>
+
+TargetFramework :- .net core installed version, which version targeting to.
+netcoreapp1.1
+netcoreapp2.0
+
+Pros:- small application size
+Cons:- Your app can run only if the version of .NET Core that you target, or a later version, 
+is already installed on the host system.
+  
+SCD Self Contained Deployment :-
+  Application published as SCD can run as executable without .net core runtime installation in the system.
+published application itself contain all .net core reference package to run the application.
+
+Pros:- no need to install .net core runtime to run your application
+       Can run the application directly as executable Eg: app.exe
+Cons:- published files size will be bigger compared to FDD
 
 To create SCD application include following codes in .csproj file
  <PropertyGroup>
-      <RuntimeIdentifiers>win10-x64;osx.10.11-x64;ubuntu.16.04-x64</RuntimeIdentifiers>
+     <RuntimeIdentifiers>win10-x64;osx.10.11-x64;ubuntu.16.04-x64</RuntimeIdentifiers>
  </PropertyGroup>
-
-
+ 
+ RuntimeIdentifiers :- Target machine operating system code with version and machine's architecture.
+ win10-x64;
+ osx.10.11-x64;
+ ubuntu.16.04-x64;
+ 
+ Restore application dotnet restore
+ Build dotnet build
+ Publish
 
 FDD
-dotnet publish -f netcoreapp1.1 -c Release
+dotnet publish -c Release -f netcoreapp1.1
+dotnet publish -c Release -f netcoreapp2.0
 
 SCD 
 dotnet publish -c Release -r win10-x64
 dotnet publish -c Release -r osx.10.11-x64
-dotnet publish -c release -r ubuntu.16.04-x64
+dotnet publish -c Release -r ubuntu.16.04-x64
+
+To run a FDD application :-
+Install .net core runtime
+Run the cmds in terminal or any CLI : dotnet <your app name>.dll
+
+To run a SCD application :-
+Change application file as exetutable by following cmd
+chmod +x <application name>
+Run the application using terminal or double click the application.

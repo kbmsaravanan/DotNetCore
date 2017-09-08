@@ -1,0 +1,21 @@
+Dotnet core publish types
+
+FDD Framework Dependent Deployment
+SCD Self Contained Deployment
+ Application created under SCD will as executable without .net core runtime installation.
+publish application itself contain all .net core refference package to run the application.
+
+To create SCD application include following codes in .csproj file
+ <PropertyGroup>
+      <RuntimeIdentifiers>win10-x64;osx.10.11-x64;ubuntu.16.04-x64</RuntimeIdentifiers>
+ </PropertyGroup>
+
+
+
+FDD
+dotnet publish -f netcoreapp1.1 -c Release
+
+SCD 
+dotnet publish -c Release -r win10-x64
+dotnet publish -c Release -r osx.10.11-x64
+dotnet publish -c release -r ubuntu.16.04-x64

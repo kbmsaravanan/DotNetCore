@@ -6,4 +6,14 @@ Benifits of Code first
  No need to rewrite all sql queries if you are porting to another RDBMS
  All queries written in linqtoSql so easy to adopt any RDBMS
  
- 
+How to create DbMigration solution
+
+Create a Empty Web project 
+Install nuget packages 
+Microsoft.EntityFrameworkCore.Tools
+Microsoft.EntityFrameworkCore.Tools.DotNet
+Microsoft.EntityFrameworkCore.Design
+Microsoft.EntityFrameworkCore.SqlServer ( for sql server )
+Microsoft.EntityFrameworkCore.SqlServer.Design ( for sql server )
+
+Create Models in Models folder

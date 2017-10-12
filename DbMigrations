@@ -4,7 +4,7 @@ Benifits of Code first
  Database version control
  Suitable for unstable database schema which keep on changing
  No need to rewrite all sql queries if you are porting to another RDBMS
- All queries written in linqtoSql so easy to adopt any RDBMS
+ All queries written in linqtoSql so easy to adopt any RDBMS 
  
 How to create DbMigration solution
 
@@ -16,4 +16,23 @@ Microsoft.EntityFrameworkCore.Design
 Microsoft.EntityFrameworkCore.SqlServer ( for sql server )
 Microsoft.EntityFrameworkCore.SqlServer.Design ( for sql server )
 
-Create Models in Models folder
+--- Initial setups ---
+Create DbContext class file
+Set up Startup Class
+Read connection string from appsettings
+Register service AddDbContext in ConfigureServices block
+
+--- Table creation ---
+Create your entity in Models (POCO Class) 
+Entity Names as Table name, Properties as Table columns, Datatype will be converted into db types
+Attributes used to set Column length Primary key and column properties
+
+Add created entity in DbContext Onmodelcreating modelbuilder
+Entities specified in Modelbuilder will be created in database tables
+
+--- Migrations ---
+Run CLI cmd :- dotnet ef migrations add <MigrationName>
+This will create Migrations folder in the solution
+DbContextModelSnapshot.cs file has all info about the data
+
+

@@ -1,1 +1,9 @@
 --- Entity Framework core Db migrations code first ---
+
+Benifits of Code first
+ Database version control
+ Suitable for unstable database schema which keep on changing
+ No need to rewrite all sql queries if you are porting to another RDBMS
+ All queries written in linqtoSql so easy to adopt any RDBMS
+ 
+ 

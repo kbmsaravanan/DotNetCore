@@ -32,7 +32,26 @@ Entities specified in Modelbuilder will be created in database tables
 
 --- Migrations ---
 Run CLI cmd :- dotnet ef migrations add <MigrationName>
-This will create Migrations folder in the solution
-DbContextModelSnapshot.cs file has all info about the data
+This will create Migrations inside Migrations folder in the solution
+DbContextModelSnapshot.cs file has all info about the database
+
+Snapshot file maintains all migration history
+Migration file for every migration a new migration file will be generated. 
+It maintain current changes. File name Timestamp_MigrationName (20170925112828_Migration_1.cs)
+
+--- How migration works ---
+While add migration cmd snapshot compare the model entities
+It will track the changes eg: datatype changes, new column, new table 
+Changes will be added into new migration file
+
+--- To Update Database ---
+Run CLI cmd :- dotnet ef database update
+On update database a new table created as __EFMigrationsHistory columns MigrationId, ProductVersion
+Migration file name will be inserted into MigrationId column and Entity framework package version in ProductVersion column
+
+--- How database update works ---
+__EFMigrationsHistory table maintains the migration history
+It will compare the Migration file list and __EFMigrationsHistory table
+Update the database if migration file name not exist in the __EFMigrationsHistory table.
 
 

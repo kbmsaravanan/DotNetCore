@@ -1,0 +1,17 @@
+-- Dotnetcore runtime installation steps in linux (ubuntu) --
+
+Install prerequisites from dotnetcore runtime 
+https://docs.microsoft.com/en-us/dotnet/core/linux-prerequisites.
+
+Download install scripts 
+https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-install-script
+
+Run below cmd to install runtime
+sudo ./dotnet-install.sh --install-dir /usr/bin/dotnet --shared-runtime --version 1.1.2
+
+Add global environment PATH variable to access dotnet system wide
+Append /usr/bin/dotnet this path in /etc/environment file
+
+Reboot the system
+
+To Check :- hit dotnet it will show dotnet installed details.
